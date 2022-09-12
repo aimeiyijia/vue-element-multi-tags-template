@@ -10,6 +10,9 @@ import '@/styles/index.scss' // global css
 import ElTableTs from 'el-table-ts'
 import 'el-table-ts/dist/el-table-ts.css'
 
+import ElFormPlus from 'el-form-plus'
+import 'el-form-plus/dist/el-form-plus.css'
+
 import App from './App'
 import store from './store'
 import router from './router'
@@ -21,6 +24,7 @@ import * as filters from './filters' // global filters
 
 Vue.use(Element)
 Vue.use(ElTableTs)
+Vue.use(ElFormPlus)
 
 // register global utility filters
 Object.keys(filters).forEach(key => {
