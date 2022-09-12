@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Vue Element Admin',
+  title: 'vue-element-multi-tags-template',
 
   /**
    * @type {boolean} true | false
