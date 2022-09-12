@@ -1,14 +1,10 @@
 import Vue from 'vue'
 import http from './http'
 
-interface HTTPRequestConfig {
-  (url: string, data?: any, contentType?: string): any
-}
-
 const AJ = 'application/json'
 const AXC = 'application/x-www-form-urlencoded;charset=UTF-8'
 
-export const $post: HTTPRequestConfig = function(url, data, contentType) {
+export const $post = function(url, data, contentType) {
   const ct = contentType || AJ
   return http({
     method: 'post',
@@ -18,7 +14,7 @@ export const $post: HTTPRequestConfig = function(url, data, contentType) {
   })
 }
 
-export const $get: HTTPRequestConfig = function(url, data, contentType) {
+export const $get = function(url, data, contentType) {
   const ct = contentType || AXC
   data = data || {}
   return http({
@@ -31,7 +27,7 @@ export const $get: HTTPRequestConfig = function(url, data, contentType) {
   })
 }
 
-export const $delete: HTTPRequestConfig = function(url, data, contentType) {
+export const $delete = function(url, data, contentType) {
   const ct = contentType || AXC
   data = data || {}
   return http({
@@ -43,7 +39,7 @@ export const $delete: HTTPRequestConfig = function(url, data, contentType) {
     }
   })
 }
-export const $put: HTTPRequestConfig = function(url, data, contentType) {
+export const $put = function(url, data, contentType) {
   const ct = contentType || AJ
   data = data || {}
   return http({
@@ -53,7 +49,7 @@ export const $put: HTTPRequestConfig = function(url, data, contentType) {
     headers: { 'Content-Type': ct }
   })
 }
-export const $getBlob: HTTPRequestConfig = function(url, data, contentType) {
+export const $getBlob = function(url, data, contentType) {
   const ct = contentType || AXC
   data = data || {}
   return http({
@@ -67,7 +63,7 @@ export const $getBlob: HTTPRequestConfig = function(url, data, contentType) {
   })
 }
 
-export const $postBlob: HTTPRequestConfig = function(url, data, contentType) {
+export const $postBlob = function(url, data, contentType) {
   const ct = contentType || AJ
   return http({
     method: 'post',
@@ -78,7 +74,7 @@ export const $postBlob: HTTPRequestConfig = function(url, data, contentType) {
   })
 }
 
-export const $postArraybuffer: HTTPRequestConfig = function(
+export const $postArraybuffer = function(
   url,
   data,
   contentType
