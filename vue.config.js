@@ -2,6 +2,8 @@
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
 
+const CopyWebpackPlugin = require('copy-webpack-plugin') // 引入插件
+
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
@@ -56,7 +58,15 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
-    }
+    },
+    plugins: [
+      new CopyWebpackPlugin([
+        {
+          from: './static',
+          to: 'static'
+        }
+      ])
+    ]
   },
   chainWebpack(config) {
     // it can improve the speed of the first screen, it is recommended to turn on preload

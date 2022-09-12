@@ -17,6 +17,10 @@ import App from './App'
 import store from './store'
 import router from './router'
 
+import './plugin'
+
+import axios from 'axios'
+
 import './icons' // icon
 import './permission' // permission control
 
@@ -27,15 +31,25 @@ Vue.use(ElTableTs)
 Vue.use(ElFormPlus)
 
 // register global utility filters
-Object.keys(filters).forEach(key => {
+Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key])
 })
 
 Vue.config.productionTip = false
 
-new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
-})
+const path = '@/../static/config.json'
+axios
+  .get(path)
+  .then(async(res) => {
+    Object.defineProperty(Vue.prototype, '$gConfig', { value: res.data })
+    console.log(Vue, '12345')
+    new Vue({
+      el: '#app',
+      router,
+      store,
+      render: (h) => h(App)
+    })
+  })
+  .catch((err) => {
+    console.log(err, '配置项读取失败')
+  })
